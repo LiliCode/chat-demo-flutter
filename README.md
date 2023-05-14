@@ -11,3 +11,7 @@
 >注意： 这个项目需要配合服务端使用
 
 服务端项目地址: <https://github.com/LiliCode/chat-server-demo>
+
+## 示例图片
+
+![示例](./demo-image.png)
