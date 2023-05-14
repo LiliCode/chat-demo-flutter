@@ -1,16 +1,13 @@
-# flutter_chat_demo
+# chat-demo-flutter
 
-A new Flutter project.
+这是一个用 Flutter 编写的聊天 demo 应用，使用 Dart 作为后端，聊天交互使用 WebSocket。
 
-## Getting Started
+## 快速使用 
 
-This project is a starting point for a Flutter application.
+1. git clone ...
+2. flutter pub get
+3. 找到 `./lib/tools/net_service/net_provider.dart` 文件中的 `host` 静态变量，修改成你自己的 IP 地址
 
-A few resources to get you started if this is your first Flutter project:
+>注意： 这个项目需要配合服务端使用
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+服务端项目地址: <https://github.com/LiliCode/chat-server-demo>
