@@ -8,6 +8,8 @@ class RegisterController extends GetxController {
   final pwdController = TextEditingController();
   final nameController = TextEditingController();
   final againPwdController = TextEditingController();
+  bool _loading = false;
+  bool get loading => _loading;
 
   void register(void Function(String?)? callback) async {
     if (accountController.text.isEmpty ||
@@ -23,6 +25,8 @@ class RegisterController extends GetxController {
       return;
     }
 
+    _loading = true;
+    update();
     final res = await NetProvider.post<Map<String, dynamic>>(
       Api.register,
       data: {
@@ -31,6 +35,8 @@ class RegisterController extends GetxController {
         'name': nameController.text
       },
     );
+    _loading = false;
+    update();
     if (res.status == NetStatus.success && res.content != null) {
       if (callback != null) {
         callback(null);

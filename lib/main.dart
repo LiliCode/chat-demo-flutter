@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/home/controllers/home_controller.dart';
+import 'package:flutter_chat_demo/posts/controllers/post_list_controller.dart';
 import 'package:flutter_chat_demo/routes/app_pages.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
 import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
@@ -13,6 +14,7 @@ void main() async {
   // 依赖注入
   Get.lazyPut(() => UserController());
   Get.lazyPut(() => HomeController());
+  Get.lazyPut(() => PostListController());
   runApp(const MyApp());
 }
 

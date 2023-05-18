@@ -6,13 +6,14 @@ import 'package:flutter_chat_demo/tools/net_service/net_provider.dart';
 import 'package:flutter_chat_demo/tools/web_socket/web_socket_prodiver.dart';
 import 'package:flutter_chat_demo/user/models/user_model.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
 
 class UserController extends GetxController {
   User user = User();
   bool get isLogin => user.account != null && user.id != null;
+  bool _loading = false;
+  bool get loading => _loading;
 
   final accountController = TextEditingController();
   final pwdController = TextEditingController();
@@ -55,6 +56,9 @@ class UserController extends GetxController {
       return;
     }
 
+    // 开始加载
+    _loading = true;
+    update();
     final res = await NetProvider.post<Map<String, dynamic>>(
       Api.login,
       data: {'account': accountController.text, 'password': pwdController.text},
@@ -64,6 +68,8 @@ class UserController extends GetxController {
       final prefers = GetStorage();
       prefers.write('LoginKey', json.encode(res.content));
       user = User.fromJson(res.content!);
+      // 加载完成
+      _loading = false;
       // 刷新状态
       update();
       // 连接 socket

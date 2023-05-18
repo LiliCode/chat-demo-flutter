@@ -4,7 +4,7 @@ class User {
   String? account;
   String? avatar;
 
-  User();
+  User({this.id, this.account, this.name, this.avatar});
 
   User.fromJson(Map<String, dynamic> json) {
     final userId = json['id'];

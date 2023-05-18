@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/login/controllers/register_controller.dart';
+import 'package:flutter_chat_demo/widgets/loading_button.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -38,31 +39,25 @@ class RegisterPage extends GetView<RegisterController> {
                 controller: controller.againPwdController,
               ),
               const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () {
-                  controller.register((p0) {
-                    if (p0 == null) {
-                      showToast('注册成功');
-                      Get.back();
-                    } else {
-                      showToast(p0);
-                    }
-                  });
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 40,
-                  width: 100,
-                  decoration: const BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                  child: const Text(
-                    '注册',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
+              SizedBox(
+                width: 100,
+                height: 40,
+                child: GetBuilder<RegisterController>(
+                  builder: (controller) => LoadingButton(
+                    title: '注册',
+                    loadingText: '注册中',
+                    radius: 20,
+                    loading: controller.loading,
+                    onTap: () {
+                      controller.register((p0) {
+                        if (p0 == null) {
+                          showToast('注册成功');
+                          Get.back();
+                        } else {
+                          showToast(p0);
+                        }
+                      });
+                    },
                   ),
                 ),
               ),

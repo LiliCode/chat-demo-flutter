@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/home/pages/home_page.dart';
+import 'package:flutter_chat_demo/posts/pages/post_list_page.dart';
 import 'package:flutter_chat_demo/tools/web_socket/web_socket_prodiver.dart';
 import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
 import 'package:flutter_chat_demo/user/pages/user_page.dart';
@@ -15,6 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   final List<Widget> _pages = [
     const HomePage(),
+    const PostListPage(),
     const UserPage(),
   ];
 
@@ -85,6 +87,10 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: '主页',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.post_add),
+                label: '帖子',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.people_alt_outlined),
