@@ -23,8 +23,7 @@ class NetResponse<T> {
 }
 
 class NetProvider {
-  // static const host = '192.168.124.38';
-  static const host = 'localhost';
+  static const host = '192.168.124.38';
   static const port = 3000;
   static const baseUrl = 'http://$host:$port';
   static const webSocketUrl = 'ws://$host:$port';

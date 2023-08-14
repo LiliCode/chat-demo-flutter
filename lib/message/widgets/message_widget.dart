@@ -59,11 +59,11 @@ class MessageWidget extends StatelessWidget {
               ? [
                   Expanded(child: Container()),
                   _buildText(context),
-                  SizedBox(
+                  const SizedBox(
                     width: 6,
                     height: 40,
                     child: Stack(
-                      children: const [
+                      children: [
                         Positioned(
                           left: -10,
                           right: 0,
@@ -81,11 +81,11 @@ class MessageWidget extends StatelessWidget {
                 ]
               : [
                   _buildAvatar(message.to?.avatar ?? ''),
-                  SizedBox(
+                  const SizedBox(
                     width: 6,
                     height: 40,
                     child: Stack(
-                      children: const [
+                      children: [
                         Positioned(
                           right: 0,
                           left: -9,
