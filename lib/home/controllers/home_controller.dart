@@ -2,6 +2,7 @@ import 'package:flutter_chat_demo/tools/net_service/net_provider.dart';
 import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
 import 'package:flutter_chat_demo/user/models/user_model.dart';
 import 'package:get/get.dart';
+import 'package:flutter_chat_demo/tools/net_service/api.dart';
 
 class HomeController extends GetxController {
   final List<User> list = [];

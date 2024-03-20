@@ -69,6 +69,10 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
         // 关闭连接
         _disconnectSocket();
         break;
+      case AppLifecycleState.hidden:
+        // 关闭连接
+        _disconnectSocket();
+        break;
     }
   }
 

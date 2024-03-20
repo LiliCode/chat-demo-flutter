@@ -7,6 +7,11 @@
 1. git clone ...
 2. flutter pub get
 3. 找到 `./lib/tools/net_service/net_provider.dart` 文件中的 `host` 静态变量，修改成你自己的 IP 地址
+4. 如果需要打包成 APK 需要签名文件 key.jks
+
+    ```shell
+    keytool -genkeypair -v -keystore key.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias my-key-alias
+    ```
 
 >注意： 这个项目需要配合服务端使用
 

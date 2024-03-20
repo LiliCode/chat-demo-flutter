@@ -84,7 +84,7 @@ class WebSocketProvider with WidgetsBindingObserver {
   /// 连接服务器
   void connect({int? id}) {
     _socket = IOWebSocketChannel.connect(
-      '${NetProvider.webSocketUrl}/ws',
+      '${NetProvider().webSocketUrl}/ws',
       headers: {'id': id},
     );
     // 获取广播对象

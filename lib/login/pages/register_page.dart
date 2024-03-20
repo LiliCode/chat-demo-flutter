@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/login/controllers/register_controller.dart';
-import 'package:flutter_chat_demo/widgets/loading_button.dart';
+import 'package:flutter_chat_demo/components/loading_button.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
 

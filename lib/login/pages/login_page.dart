@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
 import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
-import 'package:flutter_chat_demo/widgets/loading_button.dart';
+import 'package:flutter_chat_demo/components/loading_button.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
 

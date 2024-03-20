@@ -8,6 +8,7 @@ import 'package:flutter_chat_demo/user/models/user_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:flutter_chat_demo/tools/net_service/api.dart';
 
 class UserController extends GetxController {
   User user = User();

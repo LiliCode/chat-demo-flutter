@@ -36,9 +36,10 @@ dependencies:
   dio: ^5.1.1
   path_provider: ^2.0.14
   get_storage: ^2.1.1
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.1
   oktoast: ^3.3.1
   web_socket_channel: ^2.4.0
+  flutter_screenutil: ^5.9.0
 
 
 dev_dependencies:
