@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/message/controllers/message_controller.dart';
 import 'package:flutter_chat_demo/message/widgets/message_input_bar.dart';
 import 'package:flutter_chat_demo/message/widgets/message_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+/// 消息页面
 class MessagePage extends StatefulWidget {
   const MessagePage({super.key});
 
@@ -59,7 +61,7 @@ class _MessagePageState extends State with WidgetsBindingObserver {
                     child: Obx(
                       () => ListView.builder(
                         reverse: true, // 内容倒着展示
-                        padding: const EdgeInsets.only(top: 8, bottom: 8),
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
                         controller: controller.scrollController,
                         itemCount: controller.list.length,
                         itemBuilder: (context, index) => MessageWidget(
@@ -69,8 +71,8 @@ class _MessagePageState extends State with WidgetsBindingObserver {
                     ),
                   ),
                   Positioned(
-                    bottom: 20,
-                    right: 20,
+                    bottom: 20.h,
+                    right: 20.w,
                     child: Obx(
                       () => !controller.scrollBottom.value
                           ? GestureDetector(
@@ -80,19 +82,18 @@ class _MessagePageState extends State with WidgetsBindingObserver {
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.only(left: 8, right: 8),
-                                height: 30,
-                                decoration: const BoxDecoration(
+                                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                height: 30.h,
+                                decoration: BoxDecoration(
                                   color: Colors.green,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(15)),
+                                      BorderRadius.all(Radius.circular(15.r)),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   '您有新消息',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                   ),
                                 ),
                               ),

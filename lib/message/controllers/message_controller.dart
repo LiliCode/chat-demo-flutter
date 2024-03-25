@@ -7,6 +7,7 @@ import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
 import 'package:flutter_chat_demo/user/models/user_model.dart';
 import 'package:get/get.dart';
 
+/// 消息页面的控制器
 class MessageController extends GetxController {
   User? user; // 当前聊天的用户(对方)
   final _list = <Message>[].obs;

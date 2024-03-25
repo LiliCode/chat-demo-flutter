@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/message/models/message.dart';
 import 'package:flutter_chat_demo/tools/icons/app_icons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/// 暂时消息的气泡
 class MessageWidget extends StatelessWidget {
   final Message message;
 
@@ -10,12 +12,12 @@ class MessageWidget extends StatelessWidget {
 
   Widget _buildAvatar(String url) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
+      padding: EdgeInsets.only(left: 8.w, right: 8.w),
       child: ClipOval(
         child: CachedNetworkImage(
           imageUrl: url,
-          width: 40,
-          height: 40,
+          width: 40.w,
+          height: 40.w,
           fit: BoxFit.cover,
         ),
       ),
@@ -26,22 +28,22 @@ class MessageWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minWidth: 30,
-        maxWidth: (width - 40 - 56),
-        minHeight: 40,
+        minWidth: 30.w,
+        maxWidth: (width - 40.w - 56.w),
+        minHeight: 40.h,
       ),
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
           color: MessageDiration.send == message.diration
               ? Colors.blue
               : Colors.black12,
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
+          borderRadius: BorderRadius.all(Radius.circular(5.r)),
         ),
         child: Text(
           message.content?.msg ?? '',
-          style: const TextStyle(
-            fontSize: 16,
+          style: TextStyle(
+            fontSize: 16.sp,
             color: Colors.black87,
           ),
         ),
@@ -52,24 +54,24 @@ class MessageWidget extends StatelessWidget {
   Widget _buildMessage(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: message.diration == MessageDiration.send
               ? [
                   Expanded(child: Container()),
                   _buildText(context),
-                  const SizedBox(
-                    width: 6,
-                    height: 40,
+                  SizedBox(
+                    width: 6.w,
+                    height: 40.h,
                     child: Stack(
                       children: [
                         Positioned(
-                          left: -10,
+                          left: -9.w,
                           right: 0,
                           top: 0,
                           bottom: 0,
-                          child: Icon(
+                          child: const Icon(
                             AppIcons.caretRight,
                             color: Colors.blue,
                           ),
@@ -81,17 +83,17 @@ class MessageWidget extends StatelessWidget {
                 ]
               : [
                   _buildAvatar(message.to?.avatar ?? ''),
-                  const SizedBox(
-                    width: 6,
-                    height: 40,
+                  SizedBox(
+                    width: 6.w,
+                    height: 40.h,
                     child: Stack(
                       children: [
                         Positioned(
                           right: 0,
-                          left: -9,
+                          left: -9.w,
                           top: 0,
                           bottom: 0,
-                          child: Icon(
+                          child: const Icon(
                             AppIcons.caretLeft,
                             color: Colors.black12,
                           ),
@@ -103,7 +105,7 @@ class MessageWidget extends StatelessWidget {
                   Expanded(child: Container())
                 ],
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
       ],
     );
   }
