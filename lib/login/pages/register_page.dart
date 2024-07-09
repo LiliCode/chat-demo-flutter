@@ -31,11 +31,13 @@ class RegisterPage extends GetView<RegisterController> {
               const SizedBox(height: 10),
               CupertinoTextField(
                 placeholder: '请输入密码',
+                obscureText: true,
                 controller: controller.pwdController,
               ),
               const SizedBox(height: 10),
               CupertinoTextField(
                 placeholder: '请再次输入密码',
+                obscureText: true,
                 controller: controller.againPwdController,
               ),
               const SizedBox(height: 10),

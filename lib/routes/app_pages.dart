@@ -7,6 +7,7 @@ import 'package:flutter_chat_demo/main/pages/main_page.dart';
 import 'package:flutter_chat_demo/message/bindings/message_binding.dart';
 import 'package:flutter_chat_demo/message/pages/message_page.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
+import 'package:flutter_chat_demo/login/controllers/login_controller.dart';
 import 'package:get/get.dart';
 
 /// app 页面的路由
@@ -33,6 +34,7 @@ abstract class AppPages {
     GetPage(
       name: Routes.login,
       page: () => const LoginPage(),
+      binding: BindingsBuilder.put(() => LoginController()),
     ),
     GetPage(
       name: Routes.register,

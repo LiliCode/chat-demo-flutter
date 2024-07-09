@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_demo/common/login_manager.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
-import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
+import 'package:flutter_chat_demo/login/controllers/login_controller.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -14,7 +15,7 @@ class UserPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('用户'),
       ),
-      body: GetBuilder<UserController>(
+      body: GetBuilder<LoginController>(
         builder: (controller) {
           return controller.isLogin
               ? Center(
@@ -23,21 +24,21 @@ class UserPage extends StatelessWidget {
                       const SizedBox(height: 20),
                       ClipOval(
                         child: CachedNetworkImage(
-                          imageUrl: controller.user.avatar ?? '',
+                          imageUrl: LoginManager().user.avatar ?? '',
                           width: 100,
                           height: 100,
                         ),
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        '${controller.user.name}',
+                        '${LoginManager().user.name}',
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
-                        '${controller.user.account}',
+                        '${LoginManager().user.account}',
                         style: const TextStyle(
                           fontSize: 16,
                         ),

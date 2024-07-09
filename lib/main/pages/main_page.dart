@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_demo/common/login_manager.dart';
 import 'package:flutter_chat_demo/home/pages/home_page.dart';
 import 'package:flutter_chat_demo/main/controllers/main_controller.dart';
 import 'package:flutter_chat_demo/tools/web_socket/web_socket_prodiver.dart';
-import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
-import 'package:get/get.dart';
 import 'package:getx_builder_wrapper/getx_widget.dart';
 
 /// 主页面
@@ -31,9 +30,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
   /// 连接 socket
   void _connectSocket() {
-    final controller = Get.find<UserController>();
-    if (controller.isLogin && !WebSocketProvider.shared.connectStatus) {
-      WebSocketProvider.shared.connect(id: controller.user.id);
+    if (LoginManager().isLogin && !WebSocketProvider.shared.connectStatus) {
+      WebSocketProvider.shared.connect(id: LoginManager().user.id);
     }
   }
 

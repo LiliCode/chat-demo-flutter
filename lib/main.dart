@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/common/colors.dart';
+import 'package:flutter_chat_demo/common/login_manager.dart';
 import 'package:flutter_chat_demo/configs/host_manager.dart';
 import 'package:flutter_chat_demo/routes/app_pages.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
@@ -24,6 +25,9 @@ Future<void> init() async {
   if (HostManager().firstHost != null) {
     NetProvider().init(HostManager().firstHost!, kDebugMode);
   }
+
+  // 登陆初始化
+  await LoginManager().init();
 }
 
 class MyApp extends StatelessWidget {
@@ -31,8 +35,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initPage =
-        HostManager().hosts.isNotEmpty ? AppPages.initPage : AppPages.hostPage;
+    final initPage = HostManager().hosts.isNotEmpty
+        ? (LoginManager().isLogin ? AppPages.initPage : AppPages.loginPage)
+        : AppPages.hostPage;
 
     return ScreenUtilInit(
       designSize: const Size(375, 812),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chat_demo/common/login_manager.dart';
 import 'package:flutter_chat_demo/configs/host_manager.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
 import 'package:flutter_chat_demo/tools/net_service/net_provider.dart';
@@ -43,8 +44,10 @@ class _HostPageState extends State<HostPage> {
                 // 保存并设置
                 HostManager().setHost(value);
                 NetProvider().init(value, kDebugMode);
-                // 推出这个页面
-                Get.offAllNamed(Routes.main);
+                // 退出这个页面
+                final routeName =
+                    LoginManager().isLogin ? Routes.main : Routes.login;
+                Get.offAllNamed(routeName);
               },
             ),
             SizedBox(height: 10.h),

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_demo/common/login_manager.dart';
 import 'package:flutter_chat_demo/message/models/message.dart';
 import 'package:flutter_chat_demo/tools/web_socket/web_socket_prodiver.dart';
-import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
 import 'package:flutter_chat_demo/user/models/user_model.dart';
 import 'package:get/get.dart';
 
@@ -16,6 +16,13 @@ class MessageController extends GetxController {
 
   final textController = TextEditingController();
   final scrollController = ScrollController();
+
+  @override
+  void onReady() {
+    super.onReady();
+
+    user = Get.arguments;
+  }
 
   @override
   void onInit() {
@@ -66,7 +73,7 @@ class MessageController extends GetxController {
       // 自己的消息展示在UI上面
       final message = Message(
         to: user,
-        from: Get.find<UserController>().user,
+        from: LoginManager().user,
         content: MessageContent(
           msg: textController.text,
           type: MessageType.text,

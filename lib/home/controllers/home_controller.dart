@@ -1,7 +1,6 @@
+import 'package:flutter_chat_demo/common/login_manager.dart';
 import 'package:flutter_chat_demo/tools/net_service/net_provider.dart';
-import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
 import 'package:flutter_chat_demo/user/models/user_model.dart';
-import 'package:get/get.dart';
 import 'package:flutter_chat_demo/tools/net_service/api.dart';
 import 'package:getx_builder_wrapper/base_controller.dart';
 
@@ -16,7 +15,7 @@ class HomeController extends BaseListController {
 
   @override
   Future<bool> requestData(int page) async {
-    final id = Get.find<UserController>().user.id;
+    final id = LoginManager().user.id;
     final result = await NetProvider.get<List<dynamic>>(
       Api.homeList,
       query: {'id': id ?? 0},

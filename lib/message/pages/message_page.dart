@@ -44,7 +44,6 @@ class _MessagePageState extends State with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<MessageController>();
-    controller.user = Get.arguments;
 
     return Scaffold(
       appBar: AppBar(

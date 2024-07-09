@@ -4,7 +4,7 @@ import 'package:flutter_chat_demo/home/controllers/home_controller.dart';
 import 'package:flutter_chat_demo/home/pages/drawer_page.dart';
 import 'package:flutter_chat_demo/home/widgets/chat_list_tile.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
-import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
+import 'package:flutter_chat_demo/login/controllers/login_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getx_builder_wrapper/getx_widget.dart';
@@ -64,7 +64,13 @@ class _HomePageState extends State with RouteAware {
         builder: (context, controller) => ListView.separated(
           itemCount: controller.dataSource.length,
           itemBuilder: (context, index) => ChatListTile(
-            onTap: () {},
+            onTap: () {
+              // 聊天
+              Get.toNamed(
+                Routes.message,
+                arguments: controller.dataSource[index],
+              );
+            },
             user: controller.dataSource[index],
           ),
           separatorBuilder: (context, index) => Divider(

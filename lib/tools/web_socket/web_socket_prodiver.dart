@@ -83,6 +83,7 @@ class WebSocketProvider with WidgetsBindingObserver {
 
   /// 连接服务器
   void connect({int? id}) {
+    assert(NetProvider().webSocketUrl.isNotEmpty, '请设置 web_socket 的链接');
     _socket = IOWebSocketChannel.connect(
       '${NetProvider().webSocketUrl}/ws',
       headers: {'id': id},
