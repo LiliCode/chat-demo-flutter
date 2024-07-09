@@ -1,12 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_demo/common/colors.dart';
 import 'package:flutter_chat_demo/configs/host_manager.dart';
-import 'package:flutter_chat_demo/home/controllers/home_controller.dart';
-import 'package:flutter_chat_demo/posts/controllers/post_list_controller.dart';
 import 'package:flutter_chat_demo/routes/app_pages.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
 import 'package:flutter_chat_demo/tools/net_service/net_provider.dart';
-import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -17,13 +15,10 @@ void main() async {
   runApp(const MyApp());
 }
 
+// 初始化
 Future<void> init() async {
-  // 初始化持久化
+  // 初始化本地存储
   await GetStorage.init();
-  // 依赖注入
-  Get.lazyPut(() => UserController());
-  Get.lazyPut(() => HomeController());
-  Get.lazyPut(() => PostListController());
 
   // 读取 ip
   if (HostManager().firstHost != null) {
@@ -51,9 +46,14 @@ class MyApp extends StatelessWidget {
         position: ToastPosition.bottom,
         backgroundColor: Colors.black.withOpacity(0.7),
         child: GetMaterialApp(
-          title: 'Chat Demo',
+          title: 'Flutter Chat',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: AppColors.main.toMaterialColor(),
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: const AppBarTheme(
+              backgroundColor: AppColors.main,
+              foregroundColor: Colors.white,
+            ),
           ),
           debugShowCheckedModeBanner: false,
           defaultTransition: Transition.cupertino, // 默认转场方式 iOS 风格

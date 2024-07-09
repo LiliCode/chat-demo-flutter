@@ -36,15 +36,15 @@ class MessageWidget extends StatelessWidget {
         padding: EdgeInsets.all(10.w),
         decoration: BoxDecoration(
           color: MessageDiration.send == message.diration
-              ? Colors.blue
+              ? const Color.fromARGB(255, 239, 255, 222)
               : Colors.black12,
-          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+          borderRadius: BorderRadius.all(Radius.circular(17.r)),
         ),
         child: Text(
           message.content?.msg ?? '',
           style: TextStyle(
             fontSize: 16.sp,
-            color: Colors.black87,
+            color: Colors.black,
           ),
         ),
       ),
@@ -73,7 +73,7 @@ class MessageWidget extends StatelessWidget {
                           bottom: 0,
                           child: const Icon(
                             AppIcons.caretRight,
-                            color: Colors.blue,
+                            color: Color.fromARGB(255, 239, 255, 222),
                           ),
                         )
                       ],

@@ -41,6 +41,10 @@ dependencies:
   web_socket_channel: ^2.4.0
   flutter_screenutil: ^5.9.0
 
+  getx_builder_wrapper:
+    git: 
+      https://github.com/LiliCode/get_builder_wrapper.git
+
 
 dev_dependencies:
   flutter_test:

@@ -1,11 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_demo/home/controllers/home_controller.dart';
+import 'package:flutter_chat_demo/home/pages/drawer_page.dart';
+import 'package:flutter_chat_demo/home/widgets/chat_list_tile.dart';
 import 'package:flutter_chat_demo/routes/routes.dart';
 import 'package:flutter_chat_demo/user/controllers/user_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_builder_wrapper/getx_widget.dart';
 import 'package:oktoast/oktoast.dart';
 
+/// 主页面
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -45,45 +50,30 @@ class _HomePageState extends State with RouteAware {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('联系人'),
+        title: Text(
+          '聊天',
+          style: TextStyle(
+            fontSize: 18.sp,
+          ),
+        ),
       ),
-      body: GetBuilder<HomeController>(
-        builder: (controller) {
-          return RefreshIndicator(
-            child: ListView.builder(
-              itemCount: controller.list.length,
-              itemBuilder: (context, index) => ListTile(
-                leading: ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl: controller.list[index].avatar ?? '',
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                title: Text(controller.list[index].name ?? '无名氏'),
-                subtitle: Text(controller.list[index].account ?? '无账号'),
-                trailing: IconButton(
-                  onPressed: () {
-                    if (Get.find<UserController>().isLogin) {
-                      Get.toNamed(
-                        Routes.message,
-                        arguments: controller.list[index],
-                      );
-                    } else {
-                      showToast('您还为登陆账号, 暂时不能和对方聊天');
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.message,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-            ),
-            onRefresh: () => controller.refreshData(),
-          );
-        },
+      drawer: const Drawer(
+        child: DrawerPage(),
+      ),
+      body: GetBuilderListWidget<HomeController>(
+        builder: (context, controller) => ListView.separated(
+          itemCount: controller.dataSource.length,
+          itemBuilder: (context, index) => ChatListTile(
+            onTap: () {},
+            user: controller.dataSource[index],
+          ),
+          separatorBuilder: (context, index) => Divider(
+            indent: 70.w,
+            height: 5.h,
+            thickness: 0.5,
+            color: Colors.black12,
+          ),
+        ),
       ),
     );
   }

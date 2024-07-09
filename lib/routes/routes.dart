@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// 路由
 abstract class Routes {
-  static String root = '/';
+  static String main = '/';
   static String message = '/message';
   static String login = '/login';
   static String register = '/register';

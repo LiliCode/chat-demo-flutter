@@ -44,7 +44,7 @@ class _HostPageState extends State<HostPage> {
                 HostManager().setHost(value);
                 NetProvider().init(value, kDebugMode);
                 // 推出这个页面
-                Get.offAllNamed(Routes.root);
+                Get.offAllNamed(Routes.main);
               },
             ),
             SizedBox(height: 10.h),
@@ -57,7 +57,20 @@ class _HostPageState extends State<HostPage> {
             ),
             SizedBox(height: 20.h),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // 保存地址
+                final host = _hostController.value.text;
+                if (host.isNotEmpty &&
+                    (host.startsWith('http://') ||
+                        host.startsWith('https://'))) {
+                  // 保存
+                  HostManager().setHost(host);
+                  // 初始化网络
+                  NetProvider().init(host, kDebugMode);
+                  // 跳转到主页
+                  Get.offAllNamed(Routes.main);
+                }
+              },
               child: Text(
                 '确定',
                 style: TextStyle(
