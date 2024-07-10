@@ -10,6 +10,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oktoast/oktoast.dart';
+// ignore: depend_on_referenced_packages
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   await init();
@@ -65,6 +68,21 @@ class MyApp extends StatelessWidget {
           initialRoute: initPage,
           getPages: AppPages.pages,
           navigatorObservers: [Routes.routeObserver],
+          localizationsDelegates: const [
+            // 刷新组件国际化
+            RefreshLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('zh'),
+            Locale('en'),
+          ],
+          localeListResolutionCallback: (locales, supportedLocales) {
+            // 首选中文
+            return const Locale('zh');
+          },
         ),
       ),
     );
